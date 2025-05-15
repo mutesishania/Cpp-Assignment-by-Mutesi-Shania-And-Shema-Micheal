@@ -94,7 +94,7 @@ public:
     }
 //function to display student information
     void display() const {
-        cout << "\n--- Student Info ---\n";
+        cout << "\n------ Student Info ------\n";
         cout << "First name: " << firstName << endl;
         cout << "Last name: " << lastName << endl;
         cout << "Roll number: " << rollNumber << endl;
@@ -107,12 +107,13 @@ int main() {
     while (true){
     int choice;
 
-    cout << "\n...... Student Management System ........\n";
+    cout << "\n-------------------- Student Management System ----------------\n";
     cout << "1. Add student\n";
     cout << "2. Display all students\n";
     cout << "3. Find how many courses passed\n";
     cout << "4. Find how many courses failed\n";
     cout << "5. Find how many credits accumulated\n";
+    cout <<"6. Exit\n";
     cout << "Please enter your choice: ";
     cin >> choice;
 
@@ -128,33 +129,51 @@ int main() {
     }
     else if (choice == 3) {
         int rollno;
+        bool found = false;
         cout << "Please enter roll number of student: ";
         cin >> rollno;
         for (const Student& s : students) {
             if (s.getrollNumber() == rollno) {
+                found = true;
                 cout << "Number of courses passed: " << s.CountPassed() << endl;
             }
+        }
+        if(!found){
+            cout<<"student with roll number "<<rollno <<" not found.";
         }
     }
     else if (choice == 4) {
         int rollno;
+        bool found = false;
         cout << "Please enter roll number of student: ";
         cin >> rollno;
         for (const Student& s : students) {
             if (s.getrollNumber() == rollno) {
+                found = true;
                 cout << "Number of courses failed: " << s.CountFailed() << endl;
             }
+        }
+        if(!found){
+            cout<<"student with roll number "<<rollno <<" not found.";
         }
     }
     else if (choice == 5) {
         int rollno;
+        bool found = false;
         cout << "Please enter roll number of student: ";
         cin >> rollno;
         for (const Student& s : students) {
             if (s.getrollNumber() == rollno) {
+                found = true;
                 cout << "Total credits accumulated: " << s.TotalCredits() << endl;
             }
         }
+        if(!found){
+            cout<<"student with roll number "<<rollno <<" not found.";
+        }
+    }
+    else if(choice == 6){
+        break;
     }
     else {
         cout << "Invalid choice" << endl;
